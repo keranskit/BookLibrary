@@ -16,10 +16,10 @@ contract Library is Ownable {
 
     event BookBorrowed(address customer, uint bookId, string bookName);
 
-    mapping(uint => string) public bookIdToBookName;
-    mapping(string => uint) public bookNameToAvailableBookCopies;
-    mapping(uint => address) public holderOf;
-    mapping(address => string[]) public borrowedBooks;
+    mapping(uint => string) private bookIdToBookName;
+    mapping(string => uint) private bookNameToAvailableBookCopies;
+    mapping(uint => address) private holderOf;
+    mapping(address => string[]) private borrowedBooks;
 
     function addBookEdition(string calldata name, uint numberOfCopies) public onlyOwner {
         for (uint i = 0; i < numberOfCopies; i++) {
