@@ -6,8 +6,8 @@ import "./Ownable.sol";
 
 contract Library is Ownable {
 
-    uint booksCount = 0;
-    uint holderOfMapSize = 0;
+    uint private booksCount = 0;
+    uint private holderOfMapSize = 0;
 
     struct Book {
         uint id;
