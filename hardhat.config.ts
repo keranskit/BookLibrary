@@ -1,4 +1,4 @@
-import { HardhatUserConfig, task } from "hardhat/config";
+import {HardhatUserConfig, subtask, task} from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import { config as dotEnvConfig } from "dotenv";
 
@@ -21,7 +21,7 @@ const config: HardhatUserConfig = {
 
 export default config;
 
-task("deploy-with-pk", "Deploys contract with pk")
+task("deploy-pk", "Deploys contract with pk")
     .addParam("privateKey", "Please provide the private key")
     .setAction(async ({ privateKey }) => {
       const { main } = await lazyImport("./scripts/deploy-pk");
