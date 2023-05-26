@@ -69,4 +69,14 @@ describe("BookLibrary", function () {
         await expect(bookLibrary.connect(addr1).returnBook(bookIdEncrypted)).to.emit(bookLibrary, "LogBookReturned")
         await expect(bookLibrary.connect(addr1).returnBook(bookIdEncrypted)).to.be.revertedWith("You can't return a book that you haven't borrowed");
     });
+
+    it('Should return array of books', async function () {
+        await bookLibrary.addBook("bookTwo", 1);
+        const key = await bookLibrary.bookKey(1);
+        await bookLibrary.borrowBook(key)
+        const res = await bookLibrary.getAvailableBooks();
+
+        expect(res).to.not.be.null;
+        expect(res.length).to.equal(1);
+    })
 });
